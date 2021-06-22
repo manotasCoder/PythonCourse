@@ -1,30 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include '../skel/head.html' %}
-<body class="bg-dark">
-    <div class="container mt-5">
+{% extends "tasker/layout.html" %}
+
+{% block body %}
+<div class="container mt-5">
         
-        <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5">
 
 
-            <h1 class="mt-5 text-primary">Welcome to tasker my froind</h1>
+        <h1 class="mt-5 text-primary">Welcome to tasker</h1>
 
+    </div>
+
+</div>
+
+{% if tasks %}
+<div class="container mt-5">
+        
+    <div class="row justify-content-center mt-5">
+
+        <h5 class="mt-5 text-primary">here are the tasks to do</h5>
+    </div>
+
+</div>
+<ol>
+    {% for task in tasks %}
+
+    <div class="container mt-3">
+
+        <div class="row justify-content-center">
+            <li class="text-primary">
+                <h5 class="text-primary">{{task}}</h5>
+            </li>
         </div>
 
     </div>
 
-    <div class="container">
+    {% endfor %}
+</ol>
+{% else %}
+<div class="container mt-5">
+        
+    <div class="row justify-content-center mt-5">
 
-        <div class="jumbotron">
+        <h5 class="mt-5 text-primary">There are no tasks to do yet, be brave, go one step ahead of life</h5>
+    </div>
 
-            <h1 class="text-primary">hello peaseants</h1>
+</div>
+{% endif %}
 
-        </div>
+<div class="container">
+
+    <div class="row justify-content-center">
+
+
+        <a href="{% url 'tasker:add' %}"><h5 class="mt-2 text-success">Add a new task</h5></a>
 
     </div>
 
-
-{% include '../skel/footer.html' %}
-
-</body>
-</html>
+</div>
+ {% endblock %}

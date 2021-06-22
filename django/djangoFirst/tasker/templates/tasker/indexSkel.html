@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include '../skel/head.html' %}
+<body class="bg-dark">
+    <div class="container mt-5">
+        
+        <div class="row justify-content-center mt-5">
+
+
+            <h1 class="mt-5 text-primary">Welcome to tasker my froind</h1>
+
+        </div>
+
+    </div>
+    <ol>
+        {% for task in tasks %}
+    
+        <div class="container mt-3">
+
+            <div class="row justify-content-center">
+                <li class="text-primary">
+                    <h5 class="text-primary">{{task}}</h5>
+                </li>
+            </div>
+
+        </div>
+    
+        {% endfor %}
+    </ol>
+{% include '../skel/footer.html' %}
+
+</body>
+</html>

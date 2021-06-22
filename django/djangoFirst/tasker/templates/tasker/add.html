@@ -1,0 +1,35 @@
+{% extends "tasker/layout.html" %}
+    {% block body %}
+    <div class="container mt-5">
+        
+        <div class="row justify-content-center mt-5">
+
+
+            <h1 class="mt-5 text-primary">Add a new task to do</h1>
+
+        </div>
+
+    </div>
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <form action="{% url 'tasker:add' %}" method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    
+                    {{form}}
+
+                </div>
+        
+                <input class="btn btn-primary offset-11" type="submit" value="add a task">
+        
+            </form>
+
+        </div>
+
+    </div>
+    
+
+{%endblock%}
