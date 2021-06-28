@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="container mt-5">
+            
+        <div class="row justify-content-center mt-5">
+
+            <h1 class="">Passenger's list</h1>
+        </div>
+
+    </div>
+    <div class="container mt-3">
+
+        <div class="row justify-content-start">
+            {% for passenger in passengers %}
+            <a class="col-4 mx-5 my-2" href="#">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{passenger.first}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{passenger.last}}</h6>
+                    {% for flight in  passenger.flights.all %}
+                    <p class="card-text">{{ flight }}</p>
+                        {% empty %}
+                    <p class="card-text">No flights have been booked yet</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            
+        </div>
+    
+    </div>
+
+{% endblock %}

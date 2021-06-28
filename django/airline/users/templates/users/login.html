@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if context %}
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <h5 class="text-success">{{ context }}</h5>
+
+    </div>
+
+</div>
+{% endif %}
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <form action="{% url 'users:login' %}" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" name="name" id="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="destination">Password</label>
+                <input type="password" name="pass" id="pass" class="form-control">
+              </div>
+              <div class="row mt-2 justify-content-end">
+                <button type="submit" class="btn btn-primary">Create User</button>
+              </div>
+              
+          </form>
+
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

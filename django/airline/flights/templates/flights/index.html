@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="container mt-5">
+            
+        <div class="row justify-content-center mt-5">
+
+            <h1 class="">Flight's list</h1>
+        </div>
+
+    </div>
+    <div class="container mt-3">
+
+        <div class="row justify-content-start">
+            {% for flight in flights %}
+            <a class="col-4 mx-5 my-2" href="{% url 'flights:flight' flight_id=flight.id %}">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{flight.origin}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{flight.destination}}</h6>
+                    <p class="card-text">{{flight.duration}}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            
+        </div>
+    
+    </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="card col-10" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Origin: {{flight.origin}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Destination: {{flight.destination}}</h6>
+              <p class="card-text">Duration: {{flight.duration}}</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container mt-3">
+
+    <div class="row justify-content-center">
+
+        <h5>Passengers</h5>
+
+    </div>
+    <div class="row justify-content-center">
+        
+        <ul>
+            {% for passenger in passengers %}
+            <li>{{ passenger }}</li>
+            {% empty %}
+            <li>No passengers have boarded this plane</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <div class="row justify-content-center">
+        <h5 class="">book a seat</h5>
+    </div>
+    <div class="row justify-content-center">
+        <form action="{% url 'flights:book' flight_id=flight.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="passenger">travellers available:</label>
+                <select name="passenger" id="passenger" class="form-control">
+                    {% for person in people %}
+                        <option value="{{person.id}}">{{ person }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="row mt-2 justify-content-end">
+                <button type="submit" class="btn btn-primary">Add traveller</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
